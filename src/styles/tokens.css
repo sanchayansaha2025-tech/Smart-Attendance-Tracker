@@ -1,0 +1,155 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Hybrid Liquid Glass - Light Theme */
+    --background: 220 33% 98%;
+    --foreground: 224 71% 4%;
+
+    --bg-ambient-gradient: radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.12) 0px, transparent 50%),
+      radial-gradient(at 100% 0%, rgba(168, 85, 247, 0.1) 0px, transparent 50%),
+      radial-gradient(at 50% 100%, rgba(59, 130, 246, 0.12) 0px, transparent 60%);
+
+    /* Glass Surfaces */
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --glass-bg-hover: rgba(255, 255, 255, 0.85);
+    --glass-bg-active: rgba(255, 255, 255, 0.95);
+    --glass-border: rgba(255, 255, 255, 0.6);
+    --glass-border-luminous: rgba(165, 180, 252, 0.65);
+    --glass-blur: 16px;
+    --glass-saturate: 180%;
+    --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+    --glass-shadow-hover: 0 12px 40px 0 rgba(99, 102, 241, 0.15);
+
+    /* Standard UI Tokens */
+    --card: 0 0% 100%;
+    --card-foreground: 224 71% 4%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 224 71% 4%;
+
+    --primary: 243 75% 59%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 220.9 39.3% 11%;
+
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 8.9% 46.1%;
+
+    --accent: 220 14% 96%;
+    --accent-foreground: 220.9 39.3% 11%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 243 75% 59%;
+    --radius: 1rem;
+
+    /* Status Colors */
+    --status-critical: #ef4444;
+    --status-warning: #f97316;
+    --status-caution: #eab308;
+    --status-safe: #10b981;
+  }
+
+  .dark {
+    /* Hybrid Liquid Glass - Dark Theme */
+    --background: 224 71% 4%;
+    --foreground: 210 40% 98%;
+
+    --bg-ambient-gradient: radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.22) 0px, transparent 50%),
+      radial-gradient(at 100% 0%, rgba(168, 85, 247, 0.18) 0px, transparent 50%),
+      radial-gradient(at 50% 100%, rgba(59, 130, 246, 0.2) 0px, transparent 60%);
+
+    /* Glass Surfaces */
+    --glass-bg: rgba(15, 23, 42, 0.65);
+    --glass-bg-hover: rgba(30, 41, 59, 0.75);
+    --glass-bg-active: rgba(30, 41, 59, 0.9);
+    --glass-border: rgba(255, 255, 255, 0.12);
+    --glass-border-luminous: rgba(147, 197, 253, 0.35);
+    --glass-blur: 16px;
+    --glass-saturate: 180%;
+    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.45);
+    --glass-shadow-hover: 0 12px 40px 0 rgba(99, 102, 241, 0.25);
+
+    /* Standard UI Tokens */
+    --card: 224 71% 4%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 224 71% 4%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 243 75% 59%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 215 27.9% 16.9%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 215 27.9% 16.9%;
+    --muted-foreground: 217.9 10.6% 64.9%;
+
+    --accent: 215 27.9% 16.9%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 215 27.9% 16.9%;
+    --input: 215 27.9% 16.9%;
+    --ring: 243 75% 59%;
+
+    /* Status Colors */
+    --status-critical: #f87171;
+    --status-warning: #fb923c;
+    --status-caution: #facc15;
+    --status-safe: #34d399;
+  }
+}
+
+/* Fallback for browsers that do NOT support backdrop-filter */
+@supports not (backdrop-filter: blur(1px)) {
+  :root {
+    --glass-bg: rgb(248, 250, 252);
+    --glass-bg-hover: rgb(241, 245, 249);
+    --glass-bg-active: rgb(226, 232, 240);
+    --glass-border: rgb(226, 232, 240);
+  }
+
+  .dark {
+    --glass-bg: rgb(15, 23, 42);
+    --glass-bg-hover: rgb(30, 41, 59);
+    --glass-bg-active: rgb(51, 65, 85);
+    --glass-border: rgb(51, 65, 85);
+  }
+
+  .glass-surface,
+  .glass-card,
+  .glass-button,
+  .glass-nav {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Ambient gradient background helper */
+.bg-ambient {
+  background-image: var(--bg-ambient-gradient);
+  background-attachment: fixed;
+}
